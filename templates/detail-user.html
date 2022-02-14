@@ -1,0 +1,29 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    {{ user.name }}
+{% endblock %}
+
+{% block container %}
+    <div class="box">
+        <h1 class="animate__animated animate__fadeInUp animate__delay-1s">LIONS HW STATS ACCESS</h1>
+        <b>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Привет, {{ user.name }}!</p>
+        </b>
+
+        <div class="stats animate__animated animate__fadeInUp animate__delay-0.5s">
+            <div class="conversion">
+                <div class="title">Конверсия</div>
+                <div role="progressbar" aria-valuenow="{{ user.conversion }}" aria-valuemin="0" aria-valuemax="100" style="--value: {{ user.conversion }}"></div>
+            </div>
+            <div class="ltv">
+                <div class="title">LTV</div>
+                <div role="progressbar2" aria-valuenow="{{ user.ltv }}" aria-valuemin="0" aria-valuemax="100" style="--value: {{ user.ltv }}"></div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

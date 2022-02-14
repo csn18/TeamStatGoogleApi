@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+    color: black;
+    background: white;
+}
+
+td, tr {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+span {
+    font-weight: 400;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+.error {
+    color: red;
+}
+
+h1, p {
+    padding: 20px 0px;
+}
+
+p {
+    font-size: 20px;
+}
+
+body {
+    background: url(https://images.unsplash.com/photo-1603667337391-c487af918dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80) no-repeat center top / cover;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    text-align: center;
+}
+
+.box {
+}
+
+.box h1{
+    color: #ff5700;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 40px;
+    width: 670px;
+    margin: 0 auto;
+    -webkit-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.conversion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.ltv {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats > div {
+
+}
+
+.title {
+    box-sizing: border-box;
+
+    width: 120px;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    height: 53px;
+}
+
+.progress {
+    border-radius: 10px;
+    opacity: 0.7;
+    /*background-color: #ff859e;
+    background-image: linear-gradient(90deg, #ff859e 0%, #85ffbd 100%);*/
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+
+    font-size: 20px;
+    width: 500px;
+    height: 53px;
+    line-height: 53px;
+    transition: 0.6s;
+}
+
+.request {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px auto 0;
+    padding: 40px 0;
+    -webkit-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+.request input, button {
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+
+}
+
+.request button {
+
+}
+
+
+@keyframes progress {
+    0% {
+        --percentage: 0;
+    }
+    100% {
+        --percentage: var(--value);
+    }
+}
+
+@property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[role="progressbar"] {
+    --percentage: var(--value);
+    --primary: #FBAB7E;
+    --primary2: #ff5700;
+    --secondary: transparent;
+    --size: 300px;
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+[role="progressbar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(var(--primary) calc(var(--percentage) * 1%), var(--secondary) 0);
+    mask: radial-gradient(white 55%, transparent 0);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(#0000 55%, #000 0);
+    -webkit-mask-mode: alpha;
+}
+
+
+[role="progressbar"]::after {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--primary2);
+}
+
+
+@keyframes progress2 {
+    0% {
+        --percentage: 0;
+    }
+    100% {
+        --percentage: var(--value);
+    }
+}
+
+@property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[role="progressbar2"] {
+    --percentage: var(--value);
+    --primary: #FBAB7E;
+    --primary2: #ff5500;
+
+    --secondary: transparent;
+    --size: 300px;
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+[role="progressbar2"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(var(--primary) calc(var(--percentage) * 5%), var(--secondary) 0);
+    mask: radial-gradient(white 55%, transparent 0);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(#0000 55%, #000 0);
+    -webkit-mask-mode: alpha;
+}
+
+
+[role="progressbar2"]::after {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '/20';
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--primary2);
+}
+
+
+

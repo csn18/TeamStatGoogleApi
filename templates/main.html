@@ -1,0 +1,31 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block container %}
+
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>conversion</th>
+            <th>ltv</th>
+            <th>password</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in all_users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.conversion }}</td>
+                <td>{{ user.ltv }}</td>
+                <td>{{ user.password }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'template.html' %}
+
+{% block container %}
+    <div class="box animate__animated animate__fadeInUp">
+        {% if error %}
+            <b>
+                <p class="error">{{ error }}</p>
+            </b>
+        {% endif %}
+        <div class="request">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="number" name="pass-id" placeholder="Ваш id доступа" id="access" pattern=".{10000,99999}">
+                <button>Посмотреть</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
