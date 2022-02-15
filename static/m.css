@@ -4,40 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-}
-
-table {
-    width: 50%;
-    margin: auto;
-    border-collapse: collapse;
-    color: black;
-    background: white;
-}
-
-td, tr {
-    border: 1px solid gray;
-    padding: 5px;
-}
-
-span {
-    font-weight: 400;
-}
-
-.container {
-    margin: auto;
-    width: 80%;
-}
-
-.error {
-    color: red;
-}
-
-h1, p {
-    padding: 20px 0px;
-}
-
-p {
-    font-size: 20px;
+    transition: 0.5s;
 }
 
 body {
@@ -46,36 +13,104 @@ body {
     height: 100vh;
     color: #fff;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
 }
 
-.box {
+.container {
+    margin: auto;
+    width: 80%;
+    height: 90vh;
+    min-height: 90vh;
 }
 
-.box h1{
+
+/* ERROR MESSAGE */
+
+
+.error {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    color: #ffffff;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 18px;
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 10px 10px 8px 0px rgb(34 60 80 / 20%);
+    -moz-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 10px 10px 8px 0px rgb(34 60 80 / 20%);
+}
+
+
+/* MAIN CONTENT */
+
+
+.box h1 {
     color: #ffffff;
 }
 
-.stats {
+.id-field {
+    padding: 0 10px;
     display: grid;
-    grid-template-columns: repeat(2, 50%);
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.1);
+    grid-gap: 10px;
+    grid-template-columns: calc(70% - 10px) 30%;
+}
+
+.hidden {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.stats p {
+    font-weight: 600;
+}
+
+.hidden.stats {
+    padding: 0;
+    margin: 0;
+    height: 0;
+}
+
+.recommendations {
+    margin-top: 10px;
+}
+
+.stats {
+    margin: auto;
+    width: 70%;
     border-radius: 10px;
     padding: 40px;
-    width: 670px;
-    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
-@media(max-width: 750px){
-    .stats{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        margin: auto;
-    }
+.stats-block {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    margin: 0 auto;
+}
+
+.reminder-lessons {
+    font-size: 16px;
 }
 
 .conversion {
@@ -95,10 +130,8 @@ body {
     flex-direction: column;
 }
 
-
 .title {
     box-sizing: border-box;
-
     width: 120px;
     text-align: center;
     padding: 10px;
@@ -117,29 +150,46 @@ body {
 }
 
 
+/* FORM */
+
+
 .request {
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: 20px auto 0;
-    padding: 40px 0;
-    -webkit-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
-    box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
-    backdrop-filter: blur(20px);
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px 0;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    -moz-backdrop-filter: blur(15px);
+    -o-backdrop-filter: blur(15px);
+    -ms-backdrop-filter: blur(15px);
+}
+
+form {
+    box-sizing: border-box;
+}
+
+form button {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: #2a88ff;
+    color: white;
+}
+
+form button:active {
+    transform: scale(0.96);
+    box-shadow: 3px 3px 0px #2b88ff;
 }
 
 .request input, button {
-    padding: 10px;
+    padding: 10px 0 10px 10px;
     border: 0;
     outline: 0;
     border-radius: 10px;
-
 }
 
-.request button {
 
-}
+/* PROGRESS ANIMATION */
 
 
 @keyframes progress {
@@ -252,4 +302,25 @@ body {
 }
 
 
+@media (max-width: 1100px) {
+    .stats-block {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+    }
+
+    .progress-conversion {
+        --size: 250px;
+    }
+
+    .progress-ltv {
+        --size: 250px;
+    }
+
+    .id-field {
+        display: flex;
+        flex-direction: column;
+    }
+}
 

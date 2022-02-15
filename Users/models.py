@@ -6,6 +6,7 @@ class User(models.Model):
     conversion = models.IntegerField()
     ltv = models.IntegerField()
     password = models.IntegerField()
+    remaining = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
