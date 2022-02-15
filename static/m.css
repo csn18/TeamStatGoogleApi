@@ -69,6 +69,15 @@ body {
     box-shadow: 10px 10px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
+@media(max-width: 750px){
+    .stats{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+    }
+}
+
 .conversion {
     display: flex;
     align-items: center;
@@ -86,9 +95,6 @@ body {
     flex-direction: column;
 }
 
-.stats > div {
-
-}
 
 .title {
     box-sizing: border-box;
@@ -108,7 +114,6 @@ body {
     height: 53px;
     line-height: 53px;
     transition: 0.6s;
-
 }
 
 

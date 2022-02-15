@@ -1,4 +1,3 @@
-import os
 import random
 
 from django.shortcuts import render, redirect
@@ -8,7 +7,12 @@ from .models import User
 
 def add_users_to_db():
     for user in items:
-        User.objects.create(name=user[0], conversion=user[1], ltv=user[2], password=random.randint(10000, 99999))
+        User.objects.create(
+            name=user[0],
+            conversion=user[1],
+            ltv=user[2],
+            password=random.randint(10000, 99999)
+        )
 
 
 def get_sheet(request):
