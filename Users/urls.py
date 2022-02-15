@@ -1,7 +1,8 @@
 from django.urls import path
 
-from Users.views import get_sheet, get_user, get_user_id
+from Users.views import user_page, get_user_id
 
 urlpatterns = [
-    path('', get_user_id, name='id'),
+    path('page/', user_page, name='user-page'),
+    path('page/get/', get_user_id, name='user-page-get')
 ]

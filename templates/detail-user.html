@@ -7,19 +7,37 @@
 {% block container %}
     <div class="box">
         <h1 class="animate__animated animate__fadeInUp animate__delay-1s">LIONS HW STATS ACCESS</h1>
-        <b>
-            <p class="animate__animated animate__fadeInUp animate__delay-1s">Привет, {{ user.name }}!</p>
-        </b>
 
-        <div class="stats animate__animated animate__fadeInUp animate__delay-0.5s">
-            <div class="conversion">
-                <div class="title">Конверсия</div>
-                <div role="progressbar" aria-valuenow="{{ user.conversion }}" aria-valuemin="0" aria-valuemax="100" style="--value: {{ user.conversion }}"></div>
+        <div class="box animate__animated animate__fadeInUp">
+            <div class="request">
+                <form action="" method="get" class="id-field">
+                    {% csrf_token %}
+                    <input type="tel" name="pass-id" placeholder="Ваш id доступа" id="access">
+                    <button>Посмотреть</button>
+                </form>
             </div>
-            <div class="ltv">
-                <div class="title">LTV</div>
-                <div role="progressbar2" aria-valuenow="{{ user.ltv }}" aria-valuemin="0" aria-valuemax="100" style="--value: {{ user.ltv }}"></div>
+        </div>
+
+        <div class="stats animate__animated animate__fadeInUp animate__delay-0.5s hidden">
+            <h3 class="animate__animated animate__fadeDownUp text-hello">Привет, {{ user.name }}!</h3>
+
+            <div class="stats-block">
+                <div class="conversion">
+                    <div class="title">Конверсия</div>
+                    <div class="progress-conversion" role="progressbar" aria-valuenow="{{ user.conversion }}"
+                         aria-valuemin="0" aria-valuemax="100" style="--value: 1"></div>
+                </div>
+                <div class="ltv">
+                    <div class="title">LTV</div>
+                    <div class="progress-ltv" role="progressbar2" aria-valuenow="{{ user.ltv }}" aria-valuemin="0"
+                         aria-valuemax="100" style="--value: 1"></div>
+                </div>
             </div>
+
+            <div class="recommendations">
+                <p class="reminder-lessons animate__animated animate__fadeDownUp"></p>
+            </div>
+
         </div>
     </div>
 
