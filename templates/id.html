@@ -10,7 +10,7 @@
         <div class="request">
             <form action="" method="post">
                 {% csrf_token %}
-                <input type="number" name="pass-id" placeholder="Ваш id доступа" id="access" pattern=".{10000,99999}">
+                <input type="tel" name="pass-id" placeholder="Ваш id доступа" id="access">
                 <button>Посмотреть</button>
             </form>
         </div>
