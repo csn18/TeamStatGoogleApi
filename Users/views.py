@@ -21,6 +21,7 @@ def update_users_data():
     for user_object in users:
         user_db = User.objects.get(name=user_object[0])
         user_db.remaining = 0 if user_object[3] <= 0 else user_object[3]
+        user_db.conversion = user_object[1]
         user_db.save()
 
 
@@ -43,6 +44,7 @@ def get_user_id(request):
 
 
 def user_page(request):
+    update_users_data()
     return render(request, 'detail-user.html', locals())
 
 
