@@ -3,11 +3,12 @@ import random
 
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
-from .items import users
+
 from .models import User
 
 
 def add_users_to_db():
+    users = []
     for user in users:
         User.objects.create(
             name=user[0],
@@ -17,26 +18,19 @@ def add_users_to_db():
         )
 
 
-def update_users_data():
-    for user_object in users:
-        user_db = User.objects.get(name=user_object[0])
-        user_db.remaining = 0 if user_object[3] <= 0 else user_object[3]
-        user_db.conversion = user_object[1]
-        user_db.save()
-
-
-def get_sheet(request):
-    all_users = User.objects.all()
-    return render(request, 'main.html', locals())
-
-
 def get_user_id(request):
+    """
+    This function get user id from request and return JSON with user data
+    """
     if request.method == 'GET':
         password = request.GET.get('user-id')
         try:
             user = User.objects.get(password=password)
-            data = {'name': str(str(user.name).split().pop(1)), 'ltv': user.ltv, 'conversion': user.conversion,
-                    'reminder': user.remaining}
+            data = {
+                'name': str(str(user.name).split().pop(1)),
+                'ltv': user.ltv, 'conversion': user.conversion,
+                'reminder': user.remaining
+            }
             return HttpResponse(json.dumps(data), content_type="application/json")
         except Exception:
             error = 'Введенный код не существует'
@@ -44,9 +38,14 @@ def get_user_id(request):
 
 
 def user_page(request):
-    update_users_data()
+    """
+    This function render page with input field for get user id
+    """
     return render(request, 'detail-user.html', locals())
 
 
 def view_404(request, exception):
+    """
+    This function work where get error 404 and redirect user to main page
+    """
     return redirect('user-page')
