@@ -19,10 +19,14 @@ def get_stats_from_sheets():
 
     for user_data in result_list:
         try:
+            user_data[3] = int(user_data[3])
+        except ValueError:
+            user_data[3] = 0
+        try:
             user = User.objects.get(name=user_data[0])
             user.conversion = user_data[1]
             user.ltv = user_data[2]
-            user.remaining = int(user_data[3]) if int(user_data[3]) > 0 else 0
+            user.remaining = user_data[3] if user_data[3] > 0 else 0
             user.save()
         except Users.models.User.DoesNotExist:
             print('User not exist')
