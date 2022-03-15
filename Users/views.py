@@ -41,6 +41,7 @@ def user_page(request):
     """
     This function render page with input field for get user id
     """
+    get_user_id()
     return render(request, 'detail-user.html', locals())
 
 
