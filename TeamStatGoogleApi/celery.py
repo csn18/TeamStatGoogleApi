@@ -12,10 +12,9 @@ app.autodiscover_tasks()
 """
 This setting celery for update user data in database every day in 04:00AM UTC
 """
-app.conf.beat_schedule = {
-    'send-report-every-single-minute': {
-        'task': 'Users.tasks.get_stats_from_sheets',
-        # 'schedule': crontab(hour="4", minute="0")
-        'schedule': crontab(minute="*/1")
-    },
-}
+# app.conf.beat_schedule = {
+#     'send-report-every-single-minute': {
+#         'task': 'Users.tasks.get_stats_from_sheets',
+#         'schedule': crontab(hour="4", minute="0")
+#     },
+# }

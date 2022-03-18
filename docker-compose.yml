@@ -14,4 +14,12 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-     
+
+  celery-worker:
+    build: .
+    command: celery -A TeamStatGoogleApi worker -l info
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+      - web
