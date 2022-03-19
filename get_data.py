@@ -13,13 +13,13 @@ def get_service():
     return build('sheets', 'v4', http=creds_service)
 
 
-def get_stats_and_update_db():
+def get_stats_and_update_db(sheet_id, list_name):
     """
     This function parce spreadsheet and return data of sheet
     """
     SERVICE = get_service()
     SHEET = SERVICE.spreadsheets()
-    SHEET_ID = "1z26JBWnqn45dauJMag8ictuxr4wH813VUmADP1QfDCE"
-    data = SHEET.values().batchGet(spreadsheetId=SHEET_ID, ranges=['TEAM']).execute()
+    SHEET_ID = sheet_id
+    data = SHEET.values().batchGet(spreadsheetId=SHEET_ID, ranges=[list_name]).execute()
     return data
 

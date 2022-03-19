@@ -5,7 +5,18 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 
 from .models import User
-from .tasks import get_stats_from_sheets
+from .tasks import get_stats_from_sheet_2, get_stats_from_sheet_1
+
+
+def add_users_from_other_table():
+    users = []
+    for user in users:
+        User.objects.create(
+            name=user[0],
+            conversion=user[1],
+            ltv=user[2],
+            password=random.randint(1000, 9999)
+        )
 
 
 def add_users_to_db():
@@ -42,7 +53,8 @@ def user_page(request):
     """
     This function render page with input field for get user id
     """
-    get_stats_from_sheets.apply()
+    get_stats_from_sheet_1.apply()
+    get_stats_from_sheet_2.apply()
     return render(request, 'detail-user.html', locals())
 
 
